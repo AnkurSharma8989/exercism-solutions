@@ -1,0 +1,27 @@
+"""
+    Classify a positive integer as perfect, abundant, or deficient.
+"""
+def classify(number):
+    """
+    Classify a positive integer as perfect, abundant, or deficient.
+
+    :param number: The positive integer to classify.
+    :return: "perfect", "abundant", or "deficient" based on the aliquot sum.
+    :raises ValueError: If number is not a positive integer.
+    """
+    if number <= 0:
+        raise ValueError("Classification is only possible for positive integers.")
+
+    factors = []
+
+    for factor in range(1,number):
+        if number % factor == 0:
+            factors.append(factor)
+
+    sum_of_factors = sum(factors)
+
+    if sum_of_factors == number:
+        return "perfect"
+    if sum_of_factors > number:
+        return "abundant"
+    return "deficient"
